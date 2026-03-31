@@ -12,7 +12,7 @@ import constants.Constant;
 import pages.LoginPage;
 
 public class LoginTest extends Base {
-	@Test(priority = 1, description = "Validating user login with valid credentials",groups = { "smoke" })
+	@Test(priority = 1, description = "Validating user login with valid credentials", groups = { "smoke" })
 	public void verifyUserLoginwithValidCredentials() throws IOException {
 
 		String username = ExcelUtility.readStringData(0, 0, "Login Page");
@@ -27,11 +27,12 @@ public class LoginTest extends Base {
 		Assert.assertTrue(dashboardDisplay, Constant.ValidCredsError);
 	}
 
-	@Test(priority = 2, description = "Validating user login with invalid credentials",groups = { "smoke" },dataProvider = "loginProvider")
-	public void verifyUserLoginwithInvalidCredentials(String username,String password) throws IOException {
+	@Test(priority = 2, description = "Validating user login with invalid credentials", groups = {
+			"smoke" }, dataProvider = "loginProvider")
+	public void verifyUserLoginwithInvalidCredentials(String username, String password) throws IOException {
 
-		//String username = ExcelUtility.readStringData(1, 0, "Login Page");
-		//String password = ExcelUtility.readStringData(1, 1, "Login Page");
+		// String username = ExcelUtility.readStringData(1, 0, "Login Page");
+		// String password = ExcelUtility.readStringData(1, 1, "Login Page");
 
 		LoginPage login = new LoginPage(driver);
 		login.enterUsernameOnUsernameField(username);
@@ -77,12 +78,13 @@ public class LoginTest extends Base {
 
 		Assert.assertEquals(actual, expected, Constant.InvalidPasswordError);
 	}
-	@DataProvider(name = "loginProvider") 
- 	public Object[][] getDataFromDataProvider() throws IOException { 
-  
- 		return new Object[][] { new Object[] { "admin", "admin22" }, new Object[] { "admin123", "123" }, 
- 				// new Object[] {ExcelUtility.getStringData(3, 
- 				// 0,"Login"),ExcelUtility.getStringData(3,1 ,"Login")} 
- 		}; 
+
+	@DataProvider(name = "loginProvider")
+	public Object[][] getDataFromDataProvider() throws IOException {
+
+		return new Object[][] { new Object[] { "admin", "admin22" }, new Object[] { "admin123", "123" },
+				// new Object[] {ExcelUtility.getStringData(3,
+				// 0,"Login"),ExcelUtility.getStringData(3,1 ,"Login")}
+		};
 	}
 }
