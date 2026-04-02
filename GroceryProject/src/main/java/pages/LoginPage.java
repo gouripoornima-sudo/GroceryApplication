@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,18 +25,21 @@ public class LoginPage {
 	@FindBy(xpath = "//b[text()='7rmart supermarket']")
 	WebElement pageText;
 
-	public void enterUsernameOnUsernameField(String username) {
+	public LoginPage enterUsernameOnUsernameField(String username) {
 		usernamefield.sendKeys(username);
+		return this;
 	}
 
-	public void enterPasswordOnPasswordField(String password) {
+	public LoginPage enterPasswordOnPasswordField(String password) {
 		passwordfield.sendKeys(password);
+		return this;
 	}
 
-	public void clickLoginButton() {
+	public HomePage clickLoginButton() {
 		submittbutton.click();
+		return new HomePage(driver);
 	}
-
+    //Assertions
 	public boolean isDashboardDisplayed() {
 		return dashboard.isDisplayed();
 	}

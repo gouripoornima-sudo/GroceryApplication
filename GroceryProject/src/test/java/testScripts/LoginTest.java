@@ -9,9 +9,11 @@ import org.testng.annotations.Test;
 import Utilities.ExcelUtility;
 import automationCore.Base;
 import constants.Constant;
+import pages.HomePage;
 import pages.LoginPage;
 
 public class LoginTest extends Base {
+	HomePage home;
 	@Test(priority = 1, description = "Validating user login with valid credentials", groups = { "smoke" })
 	public void verifyUserLoginwithValidCredentials() throws IOException {
 
@@ -19,9 +21,8 @@ public class LoginTest extends Base {
 		String password = ExcelUtility.readStringData(0, 1, "Login Page");
 
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickLoginButton();
 
 		boolean dashboardDisplay = login.isDashboardDisplayed();
 		Assert.assertTrue(dashboardDisplay, Constant.ValidCredsError);
@@ -35,9 +36,7 @@ public class LoginTest extends Base {
 		// String password = ExcelUtility.readStringData(1, 1, "Login Page");
 
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickLoginButton();
 
 		String actual = login.getPageText();
 		String expected = "7rmart supermarket";

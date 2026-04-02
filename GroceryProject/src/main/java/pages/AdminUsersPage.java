@@ -41,12 +41,22 @@ public class AdminUsersPage {
 
 	@FindBy(name = "Search")
 	WebElement searchButton;
+	
+	//Reset WebElements
 
 	@FindBy(xpath = "(//a[contains(@href,'list-admin') and @class='btn btn-default btn-fix'])[1]")
 	WebElement resetButton;
 
 	@FindBy(xpath = "//a[contains(@class,'btn-warning')]")
 	WebElement mainResetButton;
+
+	// Assertion
+
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement AlertMsg;
+
+	@FindBy(xpath = "//h4[text()='Admin Users']")
+	WebElement usersList;
 
 	public void clickNewUserButton() {
 		newUserButton.click();
@@ -94,11 +104,21 @@ public class AdminUsersPage {
 		searchButton.click();
 	}
 
+	// Reset the AdminUsers Page
 	public void clickResetButton() {
 		resetButton.click();
 	}
 
 	public void clickMainResetButton() {
 		mainResetButton.click();
+	}
+
+	// Assertion
+	public boolean isAlertDisplayed() {
+		return AlertMsg.isDisplayed();
+	}
+
+	public boolean adminUsersList() {
+		return usersList.isDisplayed();
 	}
 }
