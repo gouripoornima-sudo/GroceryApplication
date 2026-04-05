@@ -51,9 +51,7 @@ public class LoginTest extends Base {
 		String password = ExcelUtility.readStringData(2, 1, "Login Page");
 
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickLoginButton();
 
 		String actual = login.getPageText();
 		String expected = "7rmart supermarket";
@@ -68,9 +66,7 @@ public class LoginTest extends Base {
 		String password = ExcelUtility.readStringData(3, 1, "Login Page");
 
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickLoginButton();
 
 		String actual = login.getPageText();
 		String expected = "7rmart supermarket";

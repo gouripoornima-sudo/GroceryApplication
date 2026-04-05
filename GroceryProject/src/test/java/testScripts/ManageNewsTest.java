@@ -12,6 +12,8 @@ import pages.LoginPage;
 import pages.ManageNewsPage;
 
 public class ManageNewsTest extends Base {
+	HomePage home;
+    ManageNewsPage news;
 
 	@Test(priority = 1, description = "Verify user is able to add new news")
 	public void verifyAddNewNews() throws IOException {
@@ -20,17 +22,14 @@ public class ManageNewsTest extends Base {
 		String password = ExcelUtility.readStringData(0, 1, "Login Page");
 
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickLoginButton();
 
-		HomePage home = new HomePage(driver);
-		home.clickManageNewsIcon();
+		//HomePage home = new HomePage(driver);
+		news=home.clickManageNewsIcon();
 
-		ManageNewsPage news = new ManageNewsPage(driver);
-		news.clickNewNewsButton();
-		news.enterNews("Gold Rate at Its Peak");
-		news.clickSaveButton();
+		//ManageNewsPage news = new ManageNewsPage(driver);
+		news.clickNewNewsButton().enterNews("Gold Rate at Its Peak").clickSaveButton();
 
 		boolean alert = news.isAlertMessageDisplayed();
 		Assert.assertTrue(alert, "News not added successfully");
@@ -43,17 +42,14 @@ public class ManageNewsTest extends Base {
 		String password = ExcelUtility.readStringData(0, 1, "Login Page");
 
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickLoginButton();
 
-		HomePage home = new HomePage(driver);
-		home.clickManageNewsIcon(); // clickManageNewsIcon
+		//HomePage home = new HomePage(driver);
+		news=home.clickManageNewsIcon(); // clickManageNewsIcon
 
-		ManageNewsPage news = new ManageNewsPage(driver);
-		news.clickSearchIcon();
-		news.enterNewsInSearchField("Gold");
-		news.clickSearchButton();
+		//ManageNewsPage news = new ManageNewsPage(driver);
+		news.clickSearchIcon().enterNewsInSearchField("Gold").clickSearchButton();
 
 		boolean searchResult = news.isManageNewsPageDisplayed();
 		Assert.assertTrue(searchResult, "Search failed");
@@ -66,14 +62,13 @@ public class ManageNewsTest extends Base {
 		String password = ExcelUtility.readStringData(0, 1, "Login Page");
 
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickLoginButton();
 
-		HomePage home = new HomePage(driver);
-		home.clickManageNewsIcon();
+		//HomePage home = new HomePage(driver);
+		news=home.clickManageNewsIcon();
 
-		ManageNewsPage news = new ManageNewsPage(driver);
+		//ManageNewsPage news = new ManageNewsPage(driver);
 		news.clickResetButton();
 
 		boolean reset = news.isResetSuccessful();

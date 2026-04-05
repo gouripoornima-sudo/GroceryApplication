@@ -5,9 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
-	public WebDriver driver;
+import Utilities.WaitUtility;
 
+public class LoginPage {
+	
+	public WebDriver driver;
+    WaitUtility wait=new WaitUtility();
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -36,6 +39,7 @@ public class LoginPage {
 	}
 
 	public HomePage clickLoginButton() {
+	    wait.waitUntilElementToBeClickable(driver, submittbutton);
 		submittbutton.click();
 		return new HomePage(driver);
 	}

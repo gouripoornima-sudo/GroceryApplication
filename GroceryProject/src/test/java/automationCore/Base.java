@@ -18,7 +18,7 @@ import Utilities.ScreenshotUtility;
 import constants.Constant;
 
 public class Base {
-	public WebDriver driver;
+	public  WebDriver driver;
 	Properties prop;
 	FileInputStream f;
 

@@ -46,40 +46,49 @@ public class ManageNewsPage {
 
 	@FindBy(id = "news")
 	WebElement newsInputField;
+	
 
 	// Click New News button
-	public void clickNewNewsButton() {
+	public ManageNewsPage clickNewNewsButton() {
 		newNewsButton.click();
+		return this;
 	}
 
 	// Enter news
-	public void enterNews(String news) {
+	public ManageNewsPage enterNews(String news) {
 		newsField.sendKeys(news);
+		return this;
 	}
 
 	// Click Save
-	public void clickSaveButton() {
+	public ManageNewsPage clickSaveButton() {
 		saveButton.click();
+		return this;
 	}
 
 	// Click Search icon
-	public void clickSearchIcon() {
+	public ManageNewsPage clickSearchIcon() {
 		searchIcon.click();
+		return this;
 	}
+	
 
 	// Enter news in search field
-	public void enterNewsInSearchField(String news) {
+	public ManageNewsPage enterNewsInSearchField(String news) {
 		searchNewsField.sendKeys(news);
+		return this;
 	}
 
 	// Click Search button
-	public void clickSearchButton() {
+	public ManageNewsPage clickSearchButton() {
 		searchButton.click();
+		return this;
 	}
 
 	// Click Reset button
-	public void clickResetButton() {
+	public ManageNewsPage clickResetButton() {
 		resetButton.click();
+		return this;
 	}
 
 	// Verify alert message

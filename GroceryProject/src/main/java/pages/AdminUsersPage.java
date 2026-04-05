@@ -6,9 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import Utilities.PageUtility;
+
 public class AdminUsersPage {
 
 	WebDriver driver;
+	PageUtility page=new PageUtility();
 
 	public AdminUsersPage(WebDriver driver) {
 		this.driver = driver;
@@ -41,8 +44,8 @@ public class AdminUsersPage {
 
 	@FindBy(name = "Search")
 	WebElement searchButton;
-	
-	//Reset WebElements
+
+	// Reset WebElements
 
 	@FindBy(xpath = "(//a[contains(@href,'list-admin') and @class='btn btn-default btn-fix'])[1]")
 	WebElement resetButton;
@@ -58,59 +61,72 @@ public class AdminUsersPage {
 	@FindBy(xpath = "//h4[text()='Admin Users']")
 	WebElement usersList;
 
-	public void clickNewUserButton() {
+	public AdminUsersPage clickNewUserButton() {
 		newUserButton.click();
+		return this;
 	}
 
-	public void enterUsername(String username) {
+	public AdminUsersPage enterUsername(String username) {
 		usernameField.sendKeys(username);
+		return this;
 	}
 
-	public void enterPassword(String password) {
+	public AdminUsersPage enterPassword(String password) {
 		passwordField.sendKeys(password);
+		return this;
 	}
 
-	public void selectUserType(String type) {
-		Select select = new Select(userTypeDropdown);
-		select.selectByVisibleText(type);
+	public AdminUsersPage selectUserType(String type) {
+		page.selectDropdownWithText(searchUserTypeDropdown, type);
+		//Select select = new Select(userTypeDropdown);
+		//select.selectByVisibleText(type);
+		return this;
 	}
 
-	public void clickSaveButton() {
+	public AdminUsersPage clickSaveButton() {
 		saveButton.click();
+		return this;
 	}
 
-	public void addNewUser(String username, String password, String type) {
+	public AdminUsersPage addNewUser(String username, String password, String type) {
 		clickNewUserButton();
 		enterUsername(username);
 		enterPassword(password);
 		selectUserType(type);
 		clickSaveButton();
+		return this;
 	}
 
-	public void clickSearchIcon() {
+	public AdminUsersPage clickSearchIcon() {
 		searchIcon.click();
+		return this;
 	}
 
-	public void enterSearchUsername(String username) {
+	public AdminUsersPage enterSearchUsername(String username) {
 		searchUsernameField.sendKeys(username);
+		return this;
 	}
 
-	public void selectSearchUserType(String type) {
+	public AdminUsersPage selectSearchUserType(String type) {
 		Select select = new Select(searchUserTypeDropdown);
 		select.selectByVisibleText(type);
+		return this;
 	}
 
-	public void clickSearchButton() {
+	public AdminUsersPage clickSearchButton() {
 		searchButton.click();
+		return this;
 	}
 
 	// Reset the AdminUsers Page
-	public void clickResetButton() {
+	public AdminUsersPage clickResetButton() {
 		resetButton.click();
+		return this;
 	}
 
-	public void clickMainResetButton() {
+	public AdminUsersPage clickMainResetButton() {
 		mainResetButton.click();
+		return this;
 	}
 
 	// Assertion

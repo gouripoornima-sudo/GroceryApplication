@@ -5,7 +5,7 @@ import org.testng.AssertJUnit;
 import java.io.IOException;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
+
 
 import Utilities.ExcelUtility;
 import Utilities.FakerUtility;
@@ -16,6 +16,9 @@ import pages.HomePage;
 import pages.LoginPage;
 
 public class AdmiUsersTest extends Base {
+	HomePage home;
+    AdminUsersPage admin;
+	
 
 	@Test(priority = 1, description = "Validating new user entry")
 	public void verifyAddNewUser() throws IOException {
@@ -26,20 +29,15 @@ public class AdmiUsersTest extends Base {
 		String username = ExcelUtility.readStringData(0, 0, "Login Page");
 		String password = ExcelUtility.readStringData(0, 1, "Login Page");
 
-		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+	    LoginPage login = new LoginPage(driver);
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickLoginButton();
 
-		HomePage home = new HomePage(driver);
-		home.adminUsersButton();
+		//HomePage home = new HomePage(driver);
+		admin=home.adminUsersButton();
 
-		AdminUsersPage admin = new AdminUsersPage(driver);
-		admin.clickNewUserButton();
-		admin.enterUsername(newUsername);
-		admin.enterPassword(newPassword);
-		admin.selectUserType("Admin");
-		admin.clickSaveButton();
+		//AdminUsersPage admin = new AdminUsersPage(driver); [Chaining Methods]
+		admin.clickNewUserButton().enterUsername(newUsername).enterPassword(newPassword).selectUserType("Admin").clickSaveButton();
 
 		// Assertions
 		boolean alertDisplay = admin.isAlertDisplayed();
@@ -52,20 +50,15 @@ public class AdmiUsersTest extends Base {
 		String password = ExcelUtility.readStringData(0, 1, "Login Page");
 
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickLoginButton();
 
-		HomePage home = new HomePage(driver);
-		home.adminUsersButton();
+		//HomePage home = new HomePage(driver);
+		admin=home.adminUsersButton();
 
-		AdminUsersPage admin = new AdminUsersPage(driver);
+		//AdminUsersPage admin = new AdminUsersPage(driver);
 
-		admin.clickSearchIcon();
-		admin.enterSearchUsername("Poornima");
-		admin.selectSearchUserType("Admin");
-		admin.clickSearchButton();
-		admin.clickResetButton();
+		admin.clickSearchIcon().enterSearchUsername("Poornima").selectSearchUserType("Admin").clickSearchButton().clickResetButton();
 
 		// Assertions
 		boolean usersList = admin.adminUsersList();
@@ -78,14 +71,13 @@ public class AdmiUsersTest extends Base {
 		String password = ExcelUtility.readStringData(0, 1, "Login Page");
 
 		LoginPage login = new LoginPage(driver);
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickLoginButton();
 
-		HomePage home = new HomePage(driver);
-		home.adminUsersButton();
+		//HomePage home = new HomePage(driver);
+		admin=home.adminUsersButton();
 
-		AdminUsersPage admin = new AdminUsersPage(driver);
+		//AdminUsersPage admin = new AdminUsersPage(driver);
 		admin.clickMainResetButton();
 
 		// Assertions

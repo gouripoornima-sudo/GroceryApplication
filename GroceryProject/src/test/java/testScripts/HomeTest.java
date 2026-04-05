@@ -19,10 +19,10 @@ public class HomeTest extends Base {
 		String password = ExcelUtility.readStringData(0, 1, "Login Page");
 		LoginPage login = new LoginPage(driver);
 		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
-		login.clickLoginButton();
+		home=login.clickLoginButton();
 		//HomePage home = new HomePage(driver);
 		home.clickAdminButton();
-		home.clickLogoutButton();
+		login=home.clickLogoutButton();
 		String actual = login.getPageText();
 		String expected = "7rmart supermarket";
 		Assert.assertEquals(actual, expected,Constant.UnsuccessfulLogoutError);
