@@ -30,3 +30,12 @@ This project was developed as part of my transition from Manual Testing to Autom
 ---
 
 ## Project structure
+GroceryProject/
+├── src/
+│   ├── main/java/pages/        # Page Object classes
+│   └── test/java/tests/        # Test classes
+├── test-output/                 # TestNG reports
+├── testng.xml                   # TestNG suite configuration
+├── crossBrowser.xml             # Cross browser test config
+├── parallel.xml                 # Parallel execution config
+└── pom.xml                      # Maven dependencies
